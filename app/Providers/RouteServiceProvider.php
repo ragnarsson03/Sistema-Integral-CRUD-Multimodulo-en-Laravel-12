@@ -39,6 +39,18 @@ class RouteServiceProvider extends ServiceProvider
                 ->name('medico.')
                 ->prefix('medico')
                 ->group(base_path('routes/medico.php'));
+                
+            // Rutas para el módulo de farmacia
+            Route::middleware('web')
+                ->name('farmacia.')
+                ->prefix('farmacia')
+                ->group(base_path('routes/farmacia.php'));
+                
+            // Rutas para el módulo académico
+            Route::middleware('web')
+                ->name('academico.')
+                ->prefix('academico')
+                ->group(base_path('routes/academico.php'));
         });
     }
 }

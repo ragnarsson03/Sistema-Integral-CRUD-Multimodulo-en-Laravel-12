@@ -11,10 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pacientes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('pacientes')) {
+            Schema::create('pacientes', function (Blueprint $table) {
+                $table->id();
+                $table->string('nombre');
+                $table->string('apellido');
+                $table->date('fecha_nacimiento');
+                $table->string('dni')->unique();
+                $table->enum('genero', ['masculino', 'femenino', 'otro']);
+                $table->string('direccion')->nullable();
+                $table->string('telefono')->nullable();
+                $table->string('email')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

@@ -16,3 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+
+
+use App\Http\Controllers\Farmacia\MedicamentoController;
+
+$router->get('farmacia.medicamentos.index', [MedicamentoController::class, 'index']);

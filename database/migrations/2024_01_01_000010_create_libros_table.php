@@ -12,13 +12,12 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('autor');
+            $table->string('editorial');
             $table->string('isbn')->unique();
-            $table->string('editorial')->nullable();
-            $table->year('anio_publicacion')->nullable();
-            $table->text('descripcion')->nullable();
+            $table->integer('anio_publicacion');
+            $table->integer('cantidad_disponible')->default(1);
             $table->string('categoria')->nullable();
-            $table->integer('ejemplares_totales')->default(1);
-            $table->integer('ejemplares_disponibles')->default(1);
+            $table->text('descripcion')->nullable();
             $table->timestamps();
         });
     }
