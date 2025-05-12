@@ -29,7 +29,7 @@
                                     <th class="py-3 px-4 text-left">ID</th>
                                     <th class="py-3 px-4 text-left">Nombre</th>
                                     <th class="py-3 px-4 text-left">Apellido</th>
-                                    <th class="py-3 px-4 text-left">DNI</th>
+                                    <th class="py-3 px-4 text-left">Cédula</th>
                                     <th class="py-3 px-4 text-left">Fecha Nacimiento</th>
                                     <th class="py-3 px-4 text-left">Acciones</th>
                                 </tr>
@@ -40,7 +40,7 @@
                                         <td class="py-3 px-4">{{ $paciente->id }}</td>
                                         <td class="py-3 px-4">{{ $paciente->nombre }}</td>
                                         <td class="py-3 px-4">{{ $paciente->apellido }}</td>
-                                        <td class="py-3 px-4">{{ $paciente->dni }}</td>
+                                        <td class="py-3 px-4">{{ $paciente->cedula }}</td>
                                         <td class="py-3 px-4">{{ $paciente->fecha_nacimiento }}</td>
                                         <td class="py-3 px-4 flex space-x-2">
                                             <a href="{{ route('medico.pacientes.show', $paciente) }}" class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300">

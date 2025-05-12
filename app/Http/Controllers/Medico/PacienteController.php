@@ -34,7 +34,7 @@ class PacienteController extends Controller
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'fecha_nacimiento' => 'required|date',
-            'dni' => 'required|string|max:20|unique:pacientes',
+            'cedula' => 'required|string|max:20|unique:pacientes', // Cambiado de 'dni' a 'cedula'
             'genero' => 'required|in:masculino,femenino,otro',
         ]);
 
@@ -69,7 +69,7 @@ class PacienteController extends Controller
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'fecha_nacimiento' => 'required|date',
-            'dni' => 'required|string|max:20|unique:pacientes,dni,' . $paciente->id,
+            'cedula' => 'required|string|max:20|unique:pacientes,cedula,' . $paciente->id, // Cambiado de 'dni' a 'cedula'
             'genero' => 'required|in:masculino,femenino,otro',
         ]);
 

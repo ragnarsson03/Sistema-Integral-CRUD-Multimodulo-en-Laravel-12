@@ -30,11 +30,11 @@
                             @enderror
                         </div>
                         
-                        <!-- Cédula (antes DNI) -->
+                        <!-- Cédula -->
                         <div class="mb-4">
-                            <label for="dni" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cédula</label>
-                            <input type="text" name="dni" id="dni" value="{{ old('dni') }}" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
-                            @error('dni')
+                            <label for="cedula" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cédula</label>
+                            <input type="text" name="cedula" id="cedula" value="{{ old('cedula') }}" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
+                            @error('cedula')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
@@ -93,7 +93,7 @@
                             <a href="{{ route('medico.pacientes.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-300 dark:bg-gray-700 border border-transparent rounded-md font-semibold text-xs text-gray-800 dark:text-gray-300 uppercase tracking-widest hover:bg-gray-400 dark:hover:bg-gray-600 active:bg-gray-500 dark:active:bg-gray-500 focus:outline-none focus:border-gray-500 focus:ring ring-gray-300 dark:ring-gray-700 disabled:opacity-25 transition ease-in-out duration-150 mr-3">
                                 Cancelar
                             </a>
-                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:border-blue-800 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150">
+                            <button type="submit" id="guardar-paciente" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:border-blue-800 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150">
                                 Guardar
                             </button>
                         </div>
@@ -103,3 +103,14 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        console.log('Formulario enviado');
+        // Descomenta la siguiente línea para evitar el envío y depurar
+        // e.preventDefault();
+    });
+});
+</script>

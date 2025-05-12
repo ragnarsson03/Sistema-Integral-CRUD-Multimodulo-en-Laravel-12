@@ -13,7 +13,7 @@ class Paciente extends Model
         'nombre',
         'apellido',
         'fecha_nacimiento',
-        'dni',
+        'cedula',  // Cambiado de 'dni' a 'cedula' :)
         'genero',
         'direccion',
         'telefono',
