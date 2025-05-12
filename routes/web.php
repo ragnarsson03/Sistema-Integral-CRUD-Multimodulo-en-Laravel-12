@@ -54,4 +54,27 @@ Route::middleware('auth')->group(function () {
 // Rutas de autenticación (login, registro, etc.)
 require __DIR__.'/auth.php';
 
+// Rutas para el módulo de farmacia - Movimientos de Inventario
+Route::prefix('farmacia')->name('farmacia.')->group(function () {
+    // Dashboard de inventario
+    Route::get('/dashboard', [App\Http\Controllers\Farmacia\MovimientoInventarioController::class, 'dashboard'])
+        ->name('dashboard');
+        
+    // Movimientos de inventario
+    Route::get('/movimientos', [App\Http\Controllers\Farmacia\MovimientoInventarioController::class, 'index'])
+        ->name('movimientos.index');
+        
+    // Entradas
+    Route::get('/movimientos/entrada/crear', [App\Http\Controllers\Farmacia\MovimientoInventarioController::class, 'createEntrada'])
+        ->name('movimientos.entrada.create');
+    Route::post('/movimientos/entrada', [App\Http\Controllers\Farmacia\MovimientoInventarioController::class, 'storeEntrada'])
+        ->name('movimientos.entrada.store');
+        
+    // Salidas
+    Route::get('/movimientos/salida/crear', [App\Http\Controllers\Farmacia\MovimientoInventarioController::class, 'createSalida'])
+        ->name('movimientos.salida.create');
+    Route::post('/movimientos/salida', [App\Http\Controllers\Farmacia\MovimientoInventarioController::class, 'storeSalida'])
+        ->name('movimientos.salida.store');
+});
+
 
