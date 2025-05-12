@@ -11,6 +11,7 @@ class Medicamento extends Model
     
     protected $fillable = [
         'nombre',
+        'codigo',  // Añadido el campo codigo
         'descripcion',
         'precio',
         'stock',

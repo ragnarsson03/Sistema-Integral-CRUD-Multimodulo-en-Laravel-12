@@ -32,10 +32,11 @@ class MedicamentoController extends Controller
     {
         $request->validate([
             'nombre' => 'required|string|max:255',
+            'codigo' => 'required|string|max:50|unique:medicamentos',
             'descripcion' => 'nullable|string',
             'precio' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
-            'fecha_vencimiento' => 'nullable|date',
+            'fecha_vencimiento' => 'required|date',
         ]);
 
         Medicamento::create($request->all());
@@ -67,10 +68,11 @@ class MedicamentoController extends Controller
     {
         $request->validate([
             'nombre' => 'required|string|max:255',
+            'codigo' => 'required|string|max:50|unique:medicamentos,codigo,' . $medicamento->id,
             'descripcion' => 'nullable|string',
             'precio' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
-            'fecha_vencimiento' => 'nullable|date',
+            'fecha_vencimiento' => 'required|date',
         ]);
 
         $medicamento->update($request->all());
