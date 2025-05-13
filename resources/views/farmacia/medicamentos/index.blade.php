@@ -49,6 +49,7 @@
                                     <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Nombre</th>
                                     <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Categoría</th>
                                     <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Cantidad Disponible</th>
+                                    <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Fecha Vencimiento</th>
                                     <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Estado</th>
                                     <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Acciones</th>
                                 </tr>
@@ -66,6 +67,11 @@
                                     <td class="px-6 py-4 text-center whitespace-nowrap">
                                         <span class="font-bold @if($medicamento->stock < 10) text-red-600 @else text-green-600 @endif">
                                             {{ $medicamento->stock }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-center whitespace-nowrap">
+                                        <span class="px-3 py-1 inline-flex text-sm font-semibold rounded-full {{ strtotime($medicamento->fecha_vencimiento) < strtotime('+30 days') ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800' }}">
+                                            {{ $medicamento->fecha_vencimiento->format('d/m/Y') }}
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 text-center whitespace-nowrap">

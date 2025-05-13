@@ -20,4 +20,14 @@ class Estudiante extends Model
     protected $casts = [
         'fecha_nacimiento' => 'date',
     ];
+    
+    public function asistencias()
+    {
+        return $this->hasMany(Asistencia::class);
+    }
+    
+    public function notas()
+    {
+        return $this->hasMany(Nota::class);
+    }
 }

@@ -85,7 +85,10 @@
                         <!-- Fecha de Vencimiento -->
                         <div class="mb-4">
                             <label for="fecha_vencimiento" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Fecha de Vencimiento</label>
-                            <input type="date" name="fecha_vencimiento" id="fecha_vencimiento" value="{{ old('fecha_vencimiento', $medicamento->fecha_vencimiento) }}" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
+                            <input type="date" name="fecha_vencimiento" id="fecha_vencimiento" 
+                                value="{{ old('fecha_vencimiento', $medicamento->fecha_vencimiento->format('Y-m-d')) }}" 
+                                class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" 
+                                required>
                             @error('fecha_vencimiento')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
