@@ -30,6 +30,27 @@
                             @enderror
                         </div>
                         
+                        <!-- Categoría -->
+                        <div class="mb-4">
+                            <label for="categoria" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Categoría del Medicamento
+                                <span class="text-xs text-gray-500">(Tipo de medicamento)</span>
+                            </label>
+                            <select name="categoria" id="categoria" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
+                                <option value="">Seleccionar categoría</option>
+                                <option value="analgesico" {{ old('categoria') == 'analgesico' ? 'selected' : '' }}>Analgésico</option>
+                                <option value="antibiotico" {{ old('categoria') == 'antibiotico' ? 'selected' : '' }}>Antibiótico</option>
+                                <option value="antialergico" {{ old('categoria') == 'antialergico' ? 'selected' : '' }}>Antialérgico</option>
+                                <option value="antiinflamatorio" {{ old('categoria') == 'antiinflamatorio' ? 'selected' : '' }}>Antiinflamatorio</option>
+                                <option value="antidepresivo" {{ old('categoria') == 'antidepresivo' ? 'selected' : '' }}>Antidepresivo</option>
+                                <option value="vitamina" {{ old('categoria') == 'vitamina' ? 'selected' : '' }}>Vitamina</option>
+                                <option value="otro" {{ old('categoria') == 'otro' ? 'selected' : '' }}>Otro</option>
+                            </select>
+                            @error('categoria')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        
                         <!-- Descripción -->
                         <div class="mb-4">
                             <label for="descripcion" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Descripción</label>
@@ -49,9 +70,13 @@
                         </div>
                         
                         <!-- Stock -->
+                        <!-- Inventario Inicial -->
                         <div class="mb-4">
-                            <label for="stock" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Stock</label>
-                            <input type="number" name="stock" id="stock" value="{{ old('stock') }}" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
+                            <label for="stock" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Cantidad inicial en inventario
+                                <span class="text-xs text-gray-500">(Número de unidades disponibles)</span>
+                            </label>
+                            <input type="number" name="stock" id="stock" min="0" value="{{ old('stock') }}" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
                             @error('stock')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror

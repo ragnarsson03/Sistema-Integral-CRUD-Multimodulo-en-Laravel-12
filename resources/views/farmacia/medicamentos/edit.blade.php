@@ -30,6 +30,27 @@
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
+
+                        <!-- Categoría -->
+                        <div class="mb-4">
+                            <label for="categoria" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Categoría del Medicamento
+                                <span class="text-xs text-gray-500">(Tipo de medicamento)</span>
+                            </label>
+                            <select name="categoria" id="categoria" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
+                                <option value="">Seleccionar categoría</option>
+                                <option value="analgesico" {{ old('categoria', $medicamento->categoria) == 'analgesico' ? 'selected' : '' }}>Analgésico</option>
+                                <option value="antibiotico" {{ old('categoria', $medicamento->categoria) == 'antibiotico' ? 'selected' : '' }}>Antibiótico</option>
+                                <option value="antialergico" {{ old('categoria', $medicamento->categoria) == 'antialergico' ? 'selected' : '' }}>Antialérgico</option>
+                                <option value="antiinflamatorio" {{ old('categoria', $medicamento->categoria) == 'antiinflamatorio' ? 'selected' : '' }}>Antiinflamatorio</option>
+                                <option value="antidepresivo" {{ old('categoria', $medicamento->categoria) == 'antidepresivo' ? 'selected' : '' }}>Antidepresivo</option>
+                                <option value="vitamina" {{ old('categoria', $medicamento->categoria) == 'vitamina' ? 'selected' : '' }}>Vitamina</option>
+                                <option value="otro" {{ old('categoria', $medicamento->categoria) == 'otro' ? 'selected' : '' }}>Otro</option>
+                            </select>
+                            @error('categoria')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
                         
                         <!-- Descripción -->
                         <div class="mb-4">
@@ -49,10 +70,13 @@
                             @enderror
                         </div>
                         
-                        <!-- Stock -->
+                        <!-- Cantidad inicial en inventario -->
                         <div class="mb-4">
-                            <label for="stock" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Stock</label>
-                            <input type="number" name="stock" id="stock" value="{{ old('stock', $medicamento->stock) }}" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
+                            <label for="stock" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Cantidad inicial en inventario
+                                <span class="text-xs text-gray-500">(Número de unidades disponibles)</span>
+                            </label>
+                            <input type="number" name="stock" id="stock" min="0" value="{{ old('stock', $medicamento->stock) }}" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
                             @error('stock')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -61,7 +85,7 @@
                         <!-- Fecha de Vencimiento -->
                         <div class="mb-4">
                             <label for="fecha_vencimiento" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Fecha de Vencimiento</label>
-                            <input type="date" name="fecha_vencimiento" id="fecha_vencimiento" value="{{ old('fecha_vencimiento', $medicamento->fecha_vencimiento->format('Y-m-d')) }}" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
+                            <input type="date" name="fecha_vencimiento" id="fecha_vencimiento" value="{{ old('fecha_vencimiento', $medicamento->fecha_vencimiento) }}" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
                             @error('fecha_vencimiento')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror

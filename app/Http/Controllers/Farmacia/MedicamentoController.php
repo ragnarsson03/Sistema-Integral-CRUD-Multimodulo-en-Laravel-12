@@ -33,6 +33,7 @@ class MedicamentoController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'codigo' => 'required|string|max:50|unique:medicamentos',
+            'categoria' => 'nullable|string|max:100',
             'descripcion' => 'nullable|string',
             'precio' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
