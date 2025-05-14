@@ -55,7 +55,7 @@
                                     <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">ID</th>
                                     <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Nombre</th>
                                     <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Apellido</th>
-                                    <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">DNI</th>
+                                    <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Cédula</th>
                                     <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Grado</th>
                                     <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Acciones</th>
                                 </tr>
@@ -66,7 +66,7 @@
                                     <td class="px-6 py-4 text-center whitespace-nowrap">{{ $estudiante->id }}</td>
                                     <td class="px-6 py-4 text-center whitespace-nowrap">{{ $estudiante->nombre }}</td>
                                     <td class="px-6 py-4 text-center whitespace-nowrap">{{ $estudiante->apellido }}</td>
-                                    <td class="px-6 py-4 text-center whitespace-nowrap">{{ $estudiante->dni }}</td>
+                                    <td class="px-6 py-4 text-center whitespace-nowrap">{{ $estudiante->cedula }}</td>
                                     <td class="px-6 py-4 text-center whitespace-nowrap">
                                         <span class="px-3 py-1 inline-flex text-sm font-semibold rounded-full bg-blue-100 text-blue-800">
                                             {{ $estudiante->grado }}

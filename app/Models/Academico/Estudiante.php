@@ -13,7 +13,7 @@ class Estudiante extends Model
         'nombre',
         'apellido',
         'fecha_nacimiento',
-        'dni',
+        'cedula',
         'grado',
     ];
     
