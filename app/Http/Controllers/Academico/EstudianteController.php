@@ -34,8 +34,11 @@ class EstudianteController extends Controller
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'fecha_nacimiento' => 'required|date',
-            'dni' => 'required|string|max:20|unique:estudiantes',
+            'cedula' => 'required|string|max:20|unique:estudiantes,cedula',
             'grado' => 'required|string|max:50',
+            'direccion' => 'nullable|string|max:255',
+            'telefono' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:255',
         ]);
 
         Estudiante::create($request->all());
@@ -69,8 +72,11 @@ class EstudianteController extends Controller
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'fecha_nacimiento' => 'required|date',
-            'dni' => 'required|string|max:20|unique:estudiantes,dni,' . $estudiante->id,
+            'cedula' => 'required|string|max:20|unique:estudiantes,cedula,' . $estudiante->id,
             'grado' => 'required|string|max:50',
+            'direccion' => 'nullable|string|max:255',
+            'telefono' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:255',
         ]);
 
         $estudiante->update($request->all());

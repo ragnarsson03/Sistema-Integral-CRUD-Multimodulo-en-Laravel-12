@@ -13,4 +13,10 @@ Route::middleware(['auth'])->group(function () {
     
     // Rutas para notas
     Route::resource('notas', NotaController::class);
+    
+    // Agregar estas rutas específicas
+    Route::get('notas/estudiante/{estudiante}', [NotaController::class, 'showEstudianteNotas'])
+        ->name('notas.estudiante');
+    Route::get('asistencias/estudiante/{estudiante}', [AsistenciaController::class, 'showEstudianteAsistencias'])
+        ->name('asistencias.estudiante');
 });

@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('pacientes', function (Blueprint $table) {
-            $table->renameColumn('dni', 'cedula');
+        Schema::create('pacientes', function (Blueprint $table) {
+            $table->id();
+            $table->string('cedula')->unique();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('pacientes', function (Blueprint $table) {
-            $table->renameColumn('cedula', 'dni');
-        });
+        Schema::dropIfExists('pacientes');
     }
 };

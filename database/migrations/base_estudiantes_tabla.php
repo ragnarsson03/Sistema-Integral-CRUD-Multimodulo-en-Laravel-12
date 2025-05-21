@@ -12,10 +12,12 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('matricula')->unique();
-            $table->string('email')->unique();
+            $table->string('cedula')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('telefono')->nullable();
             $table->date('fecha_nacimiento')->nullable();
+            $table->string('grado')->nullable();
+            $table->string('direccion')->nullable();
             $table->timestamps();
         });
     }
