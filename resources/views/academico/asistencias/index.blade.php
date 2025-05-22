@@ -17,11 +17,11 @@
             <!-- Selector de fecha mejorado con mejor visibilidad -->
             <div class="mb-6 flex justify-center">
                 <form action="{{ route('academico.asistencias.index') }}" method="GET" class="flex space-x-4">
-                    <div style="display: flex; align-items: center; background-color: #2d3748; border: 2px solid #4299e1; border-radius: 8px; padding: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);">
-                        <!-- Icono de calendario visible -->
+                    <div style="display: flex; align-items: center; background-color: #1e293b; border: 2px solid #3b82f6; border-radius: 8px; padding: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);">
+                        <!-- Icono de calendario blanco -->
                         <div style="margin-right: 8px; color: white; font-size: 20px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="#3b82f6"></rect>
                                 <line x1="16" y1="2" x2="16" y2="6"></line>
                                 <line x1="8" y1="2" x2="8" y2="6"></line>
                                 <line x1="3" y1="10" x2="21" y2="10"></line>
