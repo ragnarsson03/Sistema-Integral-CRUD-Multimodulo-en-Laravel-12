@@ -1,0 +1,205 @@
+/* Estilos para el módulo de asistencias */
+
+/* Contenedor principal */
+.asistencia-container {
+    background-color: #1a1d23;
+    border-radius: 10px;
+    border: 1px solid #3b82f6;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+/* Encabezado de asistencia */
+.asistencia-header {
+    background-color: #111827;
+    border-bottom: 2px solid #3b82f6;
+    padding: 1rem;
+    text-align: center;
+}
+
+.asistencia-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Selector de fecha */
+.fecha-selector {
+    background-color: #1e293b;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.fecha-input {
+    background-color: #111827;
+    border: 1px solid #4b5563;
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 0.5rem;
+    flex-grow: 1;
+}
+
+.fecha-input:focus {
+    border-color: #60a5fa;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+.fecha-boton {
+    background-color: #2563eb;
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.fecha-boton:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Tabla de asistencia */
+.asistencia-tabla {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.asistencia-tabla th {
+    background-color: #1e293b;
+    color: #d1d5db;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid #374151;
+}
+
+.asistencia-tabla td {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #1f2937;
+    color: #e5e7eb;
+}
+
+.asistencia-tabla tr:hover {
+    background-color: rgba(55, 65, 81, 0.3);
+}
+
+/* Grado badge */
+.grado-badge {
+    background-color: #1e40af;
+    border-radius: 9999px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+}
+
+/* Selector de estado */
+.estado-select {
+    background-color: #111827;
+    border: 1px solid #4b5563;
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 0.5rem;
+    width: 100%;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.5em 1.5em;
+}
+
+.estado-select:focus {
+    border-color: #60a5fa;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* Presente */
+.estado-presente {
+    background-color: rgba(16, 185, 129, 0.2);
+    border: 1px solid #10b981;
+}
+
+/* Ausente */
+.estado-ausente {
+    background-color: rgba(239, 68, 68, 0.2);
+    border: 1px solid #ef4444;
+}
+
+/* Tardanza */
+.estado-tardanza {
+    background-color: rgba(245, 158, 11, 0.2);
+    border: 1px solid #f59e0b;
+}
+
+/* Campo de observaciones */
+.observaciones-input {
+    background-color: #111827;
+    border: 1px solid #4b5563;
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.observaciones-input:focus {
+    border-color: #60a5fa;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* Botón de guardar */
+.guardar-boton {
+    background-color: #059669;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.guardar-boton:hover {
+    background-color: #047857;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.guardar-boton:active {
+    transform: translateY(0);
+}
+
+/* Mensaje de éxito */
+.mensaje-exito {
+    background-color: rgba(16, 185, 129, 0.2);
+    border: 1px solid #10b981;
+    border-radius: 6px;
+    color: #d1fae5;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+}
