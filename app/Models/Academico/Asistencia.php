@@ -11,9 +11,10 @@ class Asistencia extends Model
     
     protected $fillable = [
         'estudiante_id',
+        'curso_id',
         'fecha',
         'estado', // presente, ausente, tardanza
-        'observaciones',
+        'observacion',
     ];
     
     protected $casts = [

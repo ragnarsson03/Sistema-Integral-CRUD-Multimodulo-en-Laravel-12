@@ -27,10 +27,10 @@ class AsistenciaController extends Controller
         
         foreach ($asistenciasRegistradas as $asistencia) {
             $asistencias[$asistencia->estudiante_id] = $asistencia->estado;
-            $observaciones[$asistencia->estudiante_id] = $asistencia->observaciones;
+            $observaciones[$asistencia->estudiante_id] = $asistencia->observacion;
         }
         
-        return view('academico.asistencias.index', compact('estudiantes', 'asistencias', 'observaciones'));
+        return view('academico.asistencias.index', compact('estudiantes', 'asistencias', 'observaciones', 'fecha'));
     }
 
     /**
@@ -56,23 +56,37 @@ class AsistenciaController extends Controller
             // Eliminar asistencias existentes para la fecha seleccionada
             Asistencia::where('fecha', $fecha)->delete();
             
+            // Consultar un curso_id válido de la base de datos
+            $cursoValido = DB::table('cursos')->first();
+            
+            if (!$cursoValido) {
+                throw new \Exception('No hay cursos disponibles en el sistema. Por favor, cree al menos un curso.');
+            }
+            
             // Guardar las nuevas asistencias
             foreach ($estudianteIds as $index => $estudianteId) {
                 if (isset($estados[$estudianteId])) {
+                    // Obtener el curso del estudiante (si existe esa relación)
+                    $estudiante = Estudiante::find($estudianteId);
+                    $cursoId = $estudiante->curso_id ?? $cursoValido->id; // Usa el curso del estudiante o el primer curso válido
+                    
                     Asistencia::create([
                         'fecha' => $fecha,
                         'estudiante_id' => $estudianteId,
                         'estado' => $estados[$estudianteId],
-                        'observaciones' => $observaciones[$estudianteId] ?? null,
+                        'observacion' => $observaciones[$estudianteId] ?? null,
+                        'curso_id' => $cursoId, // Agregar el curso_id válido
                     ]);
                 }
             }
             
             DB::commit();
+            
             return redirect()->route('academico.asistencias.index', ['fecha' => $fecha])
                             ->with('success', 'Asistencia registrada correctamente.');
         } catch (\Exception $e) {
             DB::rollBack();
+            
             return back()->withErrors(['error' => 'Error al guardar las asistencias: ' . $e->getMessage()]);
         }
     }

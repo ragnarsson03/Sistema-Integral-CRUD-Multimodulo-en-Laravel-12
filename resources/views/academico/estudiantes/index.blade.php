@@ -32,6 +32,9 @@
                 <a href="{{ route('academico.notas.index') }}" class="academic-button academic-button-purple">
                     <i class="fas fa-graduation-cap mr-2"></i>Registro de Notas
                 </a>
+                <a href="{{ route('academico.cursos.index') }}" class="academic-button academic-button-info">
+                    <i class="fas fa-book mr-2"></i>Gestión de Cursos
+                </a>
             </div>
 
             <!-- Sistema de Filtrado Mejorado -->

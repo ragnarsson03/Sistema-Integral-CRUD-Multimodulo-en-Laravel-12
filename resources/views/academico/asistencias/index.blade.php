@@ -111,6 +111,31 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Obtener el elemento de entrada de fecha
+            const fechaInput = document.querySelector('input[name="fecha"]');
+            
+            // Agregar un evento para detectar cambios en la fecha
+            fechaInput.addEventListener('change', function() {
+                // Crear un formulario temporal
+                const form = document.createElement('form');
+                form.method = 'GET';
+                form.action = '{{ route("academico.asistencias.index") }}';
+                
+                // Agregar el campo de fecha al formulario
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'fecha';
+                input.value = this.value;
+                form.appendChild(input);
+                
+                // Agregar el formulario al documento y enviarlo
+                document.body.appendChild(form);
+                form.submit();
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             // Inicializar los colores de los selects según su valor actual
             const estadoSelects = document.querySelectorAll('select[name^="estado["]');
             
