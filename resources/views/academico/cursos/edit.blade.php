@@ -5,6 +5,9 @@
         </h2>
     </x-slot>
 
+    <!-- Enlazar el archivo CSS del toggle -->
+    <link rel="stylesheet" href="{{ asset('css/toggle.css') }}">
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -38,10 +41,18 @@
                         </div>
                         
                         <div class="mb-4">
-                            <label for="activo" class="flex items-center">
-                                <input type="checkbox" name="activo" id="activo" value="1" {{ old('activo', $curso->activo) ? 'checked' : '' }} class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Activo</span>
-                            </label>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Estado del Curso</label>
+                            <div class="flex items-center">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" name="activo" id="activo" value="1" {{ $curso->activo ? 'checked' : '' }}>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="toggle-label {{ $curso->activo ? 'toggle-active' : 'toggle-inactive' }}" id="estado-texto">
+                                    {{ $curso->activo ? 'Activo' : 'Inactivo' }}
+                                </span>
+                            </div>
+                            <!-- Campo oculto para asegurar que el controlador reciba información sobre el estado del toggle -->
+                            <input type="hidden" name="activo_submitted" value="1">
                         </div>
                         
                         <div class="flex items-center justify-end mt-4">
@@ -57,4 +68,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Script para actualizar el texto y la clase según el estado del toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleCheckbox = document.getElementById('activo');
+            const estadoTexto = document.getElementById('estado-texto');
+            
+            toggleCheckbox.addEventListener('change', function() {
+                if(this.checked) {
+                    estadoTexto.textContent = 'Activo';
+                    estadoTexto.classList.remove('toggle-inactive');
+                    estadoTexto.classList.add('toggle-active');
+                } else {
+                    estadoTexto.textContent = 'Inactivo';
+                    estadoTexto.classList.remove('toggle-active');
+                    estadoTexto.classList.add('toggle-inactive');
+                }
+            });
+        });
+    </script>
 </x-app-layout>

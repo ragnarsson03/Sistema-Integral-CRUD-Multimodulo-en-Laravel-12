@@ -15,6 +15,7 @@ class Estudiante extends Model
         'fecha_nacimiento',
         'cedula',
         'grado',
+        'curso_id',  // Añadir curso_id a los campos rellenables!
     ];
     
     protected $casts = [
@@ -29,5 +30,10 @@ class Estudiante extends Model
     public function notas()
     {
         return $this->hasMany(Nota::class);
+    }
+    
+    public function curso()
+    {
+        return $this->belongsTo(Curso::class);
     }
 }

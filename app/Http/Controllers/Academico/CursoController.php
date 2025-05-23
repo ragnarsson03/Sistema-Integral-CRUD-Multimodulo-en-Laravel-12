@@ -48,7 +48,7 @@ class CursoController extends Controller
             'descripcion' => $request->descripcion,
             'profesor_id' => $request->profesor_id,
             'nivel' => $request->nivel,
-            'activo' => $request->activo ?? true,
+            'activo' => $request->has('activo'),  // Esto devolverá true solo si el checkbox está marcado
         ]);
 
         return redirect()->route('academico.cursos.index')
@@ -84,8 +84,14 @@ class CursoController extends Controller
             'descripcion' => 'nullable|string',
             'profesor_id' => 'required|exists:users,id',
             'nivel' => 'nullable|integer',
-            'activo' => 'boolean',
         ]);
+
+        // Verificamos si se envió el formulario con el campo activo_submitted
+        // y establecemos explícitamente el valor de activo
+        $activo = false;
+        if ($request->has('activo_submitted')) {
+            $activo = $request->has('activo');
+        }
 
         $curso->update([
             'nombre' => $request->nombre,
@@ -93,7 +99,7 @@ class CursoController extends Controller
             'descripcion' => $request->descripcion,
             'profesor_id' => $request->profesor_id,
             'nivel' => $request->nivel,
-            'activo' => $request->activo ?? true,
+            'activo' => $activo, // Usamos la variable que hemos definido
         ]);
 
         return redirect()->route('academico.cursos.index')

@@ -59,7 +59,7 @@
                         
                         <div class="mb-4">
                             <label for="activo" class="flex items-center">
-                                <input type="checkbox" name="activo" id="activo" value="1" {{ old('activo', '1') ? 'checked' : '' }} class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                <input type="checkbox" name="activo" id="activo" value="1" {{ old('activo') ? 'checked' : '' }} class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                 <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Activo</span>
                             </label>
                         </div>
