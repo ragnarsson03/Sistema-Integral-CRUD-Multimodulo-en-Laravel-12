@@ -86,20 +86,13 @@ class CursoController extends Controller
             'nivel' => 'nullable|integer',
         ]);
 
-        // Verificamos si se envió el formulario con el campo activo_submitted
-        // y establecemos explícitamente el valor de activo
-        $activo = false;
-        if ($request->has('activo_submitted')) {
-            $activo = $request->has('activo');
-        }
-
         $curso->update([
             'nombre' => $request->nombre,
             'codigo' => $request->codigo,
             'descripcion' => $request->descripcion,
             'profesor_id' => $request->profesor_id,
             'nivel' => $request->nivel,
-            'activo' => $activo, // Usamos la variable que hemos definido
+            'activo' => $request->has('activo'),  // Simplificado: true si el checkbox está marcado, false si no
         ]);
 
         return redirect()->route('academico.cursos.index')
@@ -111,11 +104,15 @@ class CursoController extends Controller
      */
     public function destroy(Curso $curso)
     {
-        // Verificar si hay estudiantes o asistencias asociadas
-        if ($curso->estudiantes()->count() > 0 || $curso->asistencias()->count() > 0) {
-            return back()->withErrors(['error' => 'No se puede eliminar el curso porque tiene estudiantes o asistencias asociadas.']);
+        // Verificar si hay estudiantes asociados
+        if ($curso->estudiantes()->count() > 0) {
+            return back()->withErrors(['error' => 'No se puede eliminar el curso porque tiene estudiantes asociados.']);
         }
 
+        // Eliminar las asistencias asociadas
+        $curso->asistencias()->delete();
+        
+        // Ahora podemos eliminar el curso
         $curso->delete();
 
         return redirect()->route('academico.cursos.index')

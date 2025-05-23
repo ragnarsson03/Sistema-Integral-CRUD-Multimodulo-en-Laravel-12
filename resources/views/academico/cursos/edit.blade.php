@@ -47,7 +47,7 @@
                                     <input type="checkbox" name="activo" id="activo" value="1" {{ $curso->activo ? 'checked' : '' }}>
                                     <span class="toggle-slider"></span>
                                 </label>
-                                <span class="toggle-label {{ $curso->activo ? 'toggle-active' : 'toggle-inactive' }}" id="estado-texto">
+                                <span class="toggle-label ml-2 {{ $curso->activo ? 'toggle-active' : 'toggle-inactive' }}" id="estado-texto">
                                     {{ $curso->activo ? 'Activo' : 'Inactivo' }}
                                 </span>
                             </div>

@@ -11,6 +11,14 @@
                 <a href="{{ route('academico.cursos.index') }}" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition">
                     {{ __('Volver') }}
                 </a>
+                <!-- Botón de eliminar -->
+                <form action="{{ route('academico.cursos.destroy', $curso) }}" method="POST" class="inline" id="delete-form">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" onclick="confirmDelete()" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
+                        {{ __('Eliminar') }}
+                    </button>
+                </form>
             </div>
         </div>
     </x-slot>
@@ -78,4 +86,19 @@
             </div>
         </div>
     </div>
+
+    <!-- Script de confirmación (movido aquí, antes del cierre de x-app-layout) -->
+    <script>
+    function confirmDelete() {
+        if ({{ $curso->asistencias()->count() }} > 0) {
+            if (confirm('Este curso tiene {{ $curso->asistencias()->count() }} asistencias asociadas. ¿Estás seguro de que deseas eliminar el curso y todas sus asistencias?')) {
+                document.getElementById('delete-form').submit();
+            }
+        } else {
+            if (confirm('¿Estás seguro de que deseas eliminar este curso?')) {
+                document.getElementById('delete-form').submit();
+            }
+        }
+    }
+    </script>
 </x-app-layout>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Academico;
-
+use App\Models\Academico\Curso;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Academico\Estudiante;
@@ -14,7 +14,7 @@ class NotaController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Nota::with('estudiante');
+        $query = Nota::with(['estudiante', 'curso']);
         
         // Filtrar por grado si se proporciona
         if ($request->has('grado') && $request->grado) {
@@ -23,9 +23,9 @@ class NotaController extends Controller
             });
         }
         
-        // Filtrar por asignatura si se proporciona
-        if ($request->has('asignatura') && $request->asignatura) {
-            $query->where('asignatura', $request->asignatura);
+        // Filtrar por curso si se proporciona
+        if ($request->has('curso_id') && $request->curso_id) {
+            $query->where('curso_id', $request->curso_id);
         }
         
         // Filtrar por período si se proporciona
@@ -35,10 +35,10 @@ class NotaController extends Controller
         
         $notas = $query->orderBy('created_at', 'desc')->paginate(15);
         
-        // Obtener lista de asignaturas para el filtro
-        $asignaturas = Nota::select('asignatura')->distinct()->pluck('asignatura');
+        // Obtener lista de cursos para el filtro
+        $cursos = Curso::orderBy('nombre')->get();
         
-        return view('academico.notas.index', compact('notas', 'asignaturas'));
+        return view('academico.notas.index', compact('notas', 'cursos'));
     }
 
     /**
@@ -47,7 +47,8 @@ class NotaController extends Controller
     public function create()
     {
         $estudiantes = Estudiante::orderBy('apellido')->orderBy('nombre')->get();
-        return view('academico.notas.create', compact('estudiantes'));
+        $cursos = Curso::orderBy('nombre')->get();
+        return view('academico.notas.create', compact('estudiantes', 'cursos'));
     }
 
     /**
@@ -57,7 +58,7 @@ class NotaController extends Controller
     {
         $request->validate([
             'estudiante_id' => 'required|exists:estudiantes,id',
-            'asignatura' => 'required|string|max:100',
+            'curso_id' => 'required|exists:cursos,id',
             'calificacion' => 'required|numeric|min:0|max:20',
             'periodo' => 'required|string|max:50',
             'fecha' => 'required|date',
@@ -76,7 +77,8 @@ class NotaController extends Controller
     public function edit(Nota $nota)
     {
         $estudiantes = Estudiante::orderBy('apellido')->orderBy('nombre')->get();
-        return view('academico.notas.edit', compact('nota', 'estudiantes'));
+        $cursos = Curso::orderBy('nombre')->get();
+        return view('academico.notas.edit', compact('nota', 'estudiantes', 'cursos'));
     }
 
     /**
@@ -86,7 +88,7 @@ class NotaController extends Controller
     {
         $request->validate([
             'estudiante_id' => 'required|exists:estudiantes,id',
-            'asignatura' => 'required|string|max:100',
+            'curso_id' => 'required|exists:cursos,id',
             'calificacion' => 'required|numeric|min:0|max:20',
             'periodo' => 'required|string|max:50',
             'fecha' => 'required|date',

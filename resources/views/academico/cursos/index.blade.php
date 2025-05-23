@@ -56,7 +56,7 @@
                                                     <a href="{{ route('academico.cursos.edit', $curso) }}" class="px-2 py-1 bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 rounded hover:bg-yellow-200 dark:hover:bg-yellow-800 transition">
                                                         Editar
                                                     </a>
-                                                    <form action="{{ route('academico.cursos.destroy', $curso) }}" method="POST" class="inline" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este curso?');">
+                                                    <form action="{{ route('academico.cursos.destroy', $curso) }}" method="POST" class="inline" onsubmit="return confirmarEliminacion({{ $curso->id }}, {{ $curso->estudiantes()->count() }}, {{ $curso->asistencias()->count() }})">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="px-2 py-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 rounded hover:bg-red-200 dark:hover:bg-red-800 transition">
@@ -85,4 +85,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function confirmarEliminacion(cursoId, estudiantesCount, asistenciasCount) {
+            let mensaje = '¿Estás seguro de que deseas eliminar este curso?';
+            
+            if (estudiantesCount > 0) {
+                return alert('No se puede eliminar el curso porque tiene estudiantes asociados.');
+            }
+            
+            if (asistenciasCount > 0) {
+                mensaje = `Este curso tiene ${asistenciasCount} asistencias asociadas. ¿Estás seguro de que deseas eliminar el curso y todas sus asistencias?`;
+            }
+            
+            return confirm(mensaje);
+        }
+    </script>
 </x-app-layout>

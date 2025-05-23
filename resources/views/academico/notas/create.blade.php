@@ -29,10 +29,18 @@
                         </div>
                         
                         <!-- Asignatura -->
+                        <!-- Reemplazar el campo de texto de asignatura por un select -->
                         <div class="mb-4">
-                            <label for="asignatura" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Asignatura</label>
-                            <input type="text" name="asignatura" id="asignatura" value="{{ old('asignatura') }}" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
-                            @error('asignatura')
+                            <label for="curso_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Curso</label>
+                            <select name="curso_id" id="curso_id" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500" required>
+                                <option value="">Seleccionar curso</option>
+                                @foreach($cursos as $curso)
+                                    <option value="{{ $curso->id }}" {{ old('curso_id') == $curso->id ? 'selected' : '' }}>
+                                        {{ $curso->nombre }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('curso_id')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>

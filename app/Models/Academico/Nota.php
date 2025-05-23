@@ -11,7 +11,7 @@ class Nota extends Model
     
     protected $fillable = [
         'estudiante_id',
-        'asignatura',
+        'curso_id',      // Cambiado de 'asignatura'
         'calificacion',
         'periodo',
         'fecha_evaluacion',
@@ -25,5 +25,10 @@ class Nota extends Model
     public function estudiante()
     {
         return $this->belongsTo(Estudiante::class);
+    }
+
+    public function curso()
+    {
+        return $this->belongsTo(Curso::class);
     }
 }

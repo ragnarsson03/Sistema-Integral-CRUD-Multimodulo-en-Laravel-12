@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('notas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('estudiante_id')->constrained()->onDelete('cascade');
-            $table->string('asignatura');
+            $table->foreignId('curso_id')->constrained()->onDelete('restrict');  // Nuevo campo
             $table->decimal('calificacion', 5, 2);
             $table->string('periodo');
             $table->date('fecha_evaluacion');
             $table->text('observaciones')->nullable();
             $table->timestamps();
             
-            // Índice para búsquedas rápidas
-            $table->index(['estudiante_id', 'asignatura', 'periodo']);
+            // Índice actualizado
+            $table->index(['estudiante_id', 'curso_id', 'periodo']);
         });
     }
 

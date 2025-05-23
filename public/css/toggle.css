@@ -2,8 +2,8 @@
 .toggle-switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 30px;
+    width: 50px;  /* Reducido ligeramente */
+    height: 24px; /* Reducido ligeramente */
     margin-right: 10px;
 }
 
@@ -21,32 +21,32 @@
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    transition: .4s;
-    border-radius: 30px;
+    transition: .3s;
+    border-radius: 24px;
 }
 
 .toggle-slider:before {
     position: absolute;
     content: "";
-    height: 22px;
-    width: 22px;
-    left: 4px;
-    bottom: 4px;
+    height: 18px; /* Ajustado */
+    width: 18px;  /* Ajustado */
+    left: 3px;    /* Ajustado */
+    bottom: 3px;  /* Ajustado */
     background-color: white;
-    transition: .4s;
+    transition: .3s;
     border-radius: 50%;
 }
 
 input:checked + .toggle-slider {
-    background-color: #38a169;
+    background-color: #10b981; /* Color verde más brillante como en la imagen */
 }
 
 input:focus + .toggle-slider {
-    box-shadow: 0 0 1px #38a169;
+    box-shadow: 0 0 1px #10b981;
 }
 
 input:checked + .toggle-slider:before {
-    transform: translateX(30px);
+    transform: translateX(26px); /* Ajustado */
 }
 
 .toggle-label {
@@ -54,12 +54,13 @@ input:checked + .toggle-slider:before {
     vertical-align: middle;
     margin-left: 5px;
     font-weight: 500;
+    font-size: 0.875rem; /* Tamaño de fuente ajustado */
 }
 
 .toggle-active {
-    color: #38a169;
+    color: #10b981; /* Verde más brillante */
 }
 
 .toggle-inactive {
-    color: #e53e3e;
+    color: #ef4444; /* Rojo más brillante */
 }
