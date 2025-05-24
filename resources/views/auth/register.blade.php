@@ -9,21 +9,21 @@
 
         <!-- Nombre -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('Nombre')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Ingrese su nombre completo" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Correo Electrónico -->
         <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('Correo Electrónico')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="ejemplo@correo.com" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Contraseña -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('Contraseña')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
@@ -36,7 +36,7 @@
 
         <!-- Confirmar Contraseña -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <x-input-label for="password_confirmation" :value="__('Confirmar Contraseña')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
                             type="password"
@@ -48,13 +48,13 @@
 
         <div class="flex flex-col space-y-4 mt-6">
             <button type="submit" class="auth-button">
-                {{ __('Register') }}
+                {{ __('Registrarse') }}
             </button>
             
             <div class="text-center text-sm">
-                {{ __('Already registered?') }}
+                {{ __('¿Ya tiene una cuenta?') }}
                 <a class="auth-link" href="{{ route('login') }}">
-                    {{ __('Login') }}
+                    {{ __('Iniciar Sesión') }}
                 </a>
             </div>
         </div>

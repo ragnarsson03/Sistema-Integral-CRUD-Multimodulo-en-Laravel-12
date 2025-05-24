@@ -1,6 +1,6 @@
 /* Estilos para las páginas de autenticación */
 .uneti-header {
-    background-color: #0a1c2e; /* Color oscuro para el encabezado, similar a la imagen */
+    background-color: #0a1c2e;
     border-bottom: 3px solid #0056b3;
     padding: 15px 0;
     margin-bottom: 20px;
@@ -35,7 +35,44 @@
     margin-bottom: 1.5rem;
 }
 
-/* Botón de registro */
+/* Mejora de la visibilidad de las etiquetas */
+label {
+    color: #333333 !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
+}
+
+/* Mejora de los campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    background-color: #f8f9fa !important;
+    border: 1px solid #ced4da !important;
+    color: #333333 !important;
+    padding: 0.75rem !important;
+    border-radius: 4px !important;
+    font-size: 1rem !important;
+    width: 100% !important;
+    transition: border-color 0.3s, box-shadow 0.3s !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #0056b3 !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.25) !important;
+    outline: none !important;
+}
+
+/* Mejora del checkbox */
+input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+/* Botón de registro e inicio de sesión */
 .auth-button {
     background-color: #0056b3;
     color: white;
@@ -45,6 +82,8 @@
     transition: background-color 0.3s;
     width: 100%;
     text-align: center;
+    border: none;
+    cursor: pointer;
 }
 
 .auth-button:hover {
@@ -65,5 +104,24 @@
 
 /* Fondo de la página */
 .auth-page-bg {
-    background-color: #f8f9fa;
+    background-color: #f0f4f8;
+}
+
+/* Mensajes de error */
+.text-red-500 {
+    color: #dc3545 !important;
+}
+
+/* Estilos para los botones primarios de Laravel */
+.bg-gray-800, .dark\:bg-gray-800 {
+    background-color: #0056b3 !important;
+}
+
+.hover\:bg-gray-700:hover, .dark\:hover\:bg-gray-700:hover {
+    background-color: #003d7a !important;
+}
+
+/* Mejora de la visibilidad del texto "Recordarme" */
+.text-gray-600, .dark\:text-gray-400 {
+    color: #333333 !important;
 }
