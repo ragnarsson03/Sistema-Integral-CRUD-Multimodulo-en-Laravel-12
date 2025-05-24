@@ -1,0 +1,58 @@
+/* Estilos para alertas del sistema */
+.alert-container {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.alert-container:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border-left: 6px solid #ffc107;
+    color: #856404;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.alert-warning::before {
+    content: '⚠️';
+    font-size: 20px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.alert-warning a {
+    color: #533f03;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.alert-warning a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.alert-action-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #ffc107;
+    color: #000;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.alert-action-button:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+}

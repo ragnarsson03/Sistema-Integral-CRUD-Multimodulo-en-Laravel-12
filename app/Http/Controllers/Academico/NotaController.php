@@ -46,8 +46,22 @@ class NotaController extends Controller
      */
     public function create()
     {
+        // Verificar si existen cursos
+        $cursosCount = Curso::count();
+        if ($cursosCount === 0) {
+            return redirect()->route('academico.cursos.create')
+                             ->with('warning', 'Debe crear al menos un curso antes de registrar notas. Por favor, cree un curso primero.');
+        }
+
         $estudiantes = Estudiante::orderBy('apellido')->orderBy('nombre')->get();
         $cursos = Curso::orderBy('nombre')->get();
+        
+        // Verificar si hay estudiantes
+        if ($estudiantes->isEmpty()) {
+            return redirect()->route('academico.estudiantes.create')
+                             ->with('warning', 'Debe registrar al menos un estudiante antes de crear notas. Por favor, registre un estudiante primero.');
+        }
+
         return view('academico.notas.create', compact('estudiantes', 'cursos'));
     }
 

@@ -7,6 +7,24 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if(session('warning'))
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" role="alert">
+                    <p>{{ session('warning') }}</p>
+                </div>
+            @endif
+
+            @if($cursos->isEmpty())
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" role="alert">
+                    <p>No hay cursos disponibles. Por favor, <a href="{{ route('academico.cursos.create') }}" class="underline hover:text-yellow-900">cree un curso</a> primero.</p>
+                </div>
+            @endif
+
+            @if($estudiantes->isEmpty())
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" role="alert">
+                    <p>No hay estudiantes registrados. Por favor, <a href="{{ route('academico.estudiantes.create') }}" class="underline hover:text-yellow-900">registre un estudiante</a> primero.</p>
+                </div>
+            @endif
+
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <form method="POST" action="{{ route('academico.notas.store') }}">

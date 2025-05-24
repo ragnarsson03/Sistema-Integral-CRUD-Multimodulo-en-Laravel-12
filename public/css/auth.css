@@ -1,0 +1,69 @@
+/* Estilos para las páginas de autenticación */
+.uneti-header {
+    background-color: #0a1c2e; /* Color oscuro para el encabezado, similar a la imagen */
+    border-bottom: 3px solid #0056b3;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.uneti-logo {
+    max-width: 180px;
+    height: auto;
+}
+
+.auth-container {
+    background-color: #ffffff;
+    border-top: 4px solid #0056b3;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el formulario */
+.auth-title {
+    color: #0a1c2e;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Botón de registro */
+.auth-button {
+    background-color: #0056b3;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.auth-button:hover {
+    background-color: #003d7a;
+}
+
+/* Enlace de inicio de sesión */
+.auth-link {
+    color: #0056b3;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-link:hover {
+    color: #003d7a;
+    text-decoration: underline;
+}
+
+/* Fondo de la página */
+.auth-page-bg {
+    background-color: #f8f9fa;
+}
