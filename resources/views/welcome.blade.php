@@ -11,7 +11,7 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
-        <!-- Styles -->
+        <!-- Estilo del navbar (Barrita de Navegación) y -->
         <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
         <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     </head>
@@ -87,8 +87,8 @@
             </div>
             
             <div class="footer">
-                <p>© {{ date('Y') }} Sistema Integral CRUD Multimodular - Universidad UNETI</p>
-                <p>Desarrollado como proyecto universitario para la evaluación de sistemas CRUD</p>
+                <p>Sistema Integral CRUD Multimodular - Universidad UNETI</p>
+                <p>Desarrollado por Frederick Durán, como proyecto universitario para la evaluación de sistemas CRUD Sesión Didáctica 1</p>
                 <p>Docente: Elias Vargas</p>
             </div>
         </div>
