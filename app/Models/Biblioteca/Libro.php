@@ -24,4 +24,24 @@ class Libro extends Model
         'anio_publicacion' => 'integer',
         'cantidad_disponible' => 'integer',
     ];
+
+    public function prestamos()
+    {
+        return $this->hasMany(Prestamo::class);
+    }
+
+    public function actualizarCantidad($cantidad, $tipo)
+    {
+        if ($tipo === 'entrada') {
+            $this->cantidad_disponible += $cantidad;
+        } elseif ($tipo === 'salida' && $this->cantidad_disponible >= $cantidad) {
+            $this->cantidad_disponible -= $cantidad;
+        }
+        return $this->save();
+    }
+
+    public function estaDisponible()
+    {
+        return $this->cantidad_disponible > 0;
+    }
 }

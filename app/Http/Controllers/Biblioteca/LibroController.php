@@ -11,9 +11,22 @@ class LibroController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $libros = Libro::latest()->paginate(10);
+        $query = Libro::query();
+        
+        // Aplicar filtros de búsqueda si se proporciona un término
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('titulo', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('autor', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('editorial', 'LIKE', "%{$searchTerm}%")
+                  ->orWhere('isbn', 'LIKE', "%{$searchTerm}%");
+            });
+        }
+        
+        $libros = $query->latest()->paginate(10)->withQueryString();
         return view('biblioteca.libros.index', compact('libros'));
     }
 
@@ -90,5 +103,18 @@ class LibroController extends Controller
 
         return redirect()->route('biblioteca.libros.index')
             ->with('success', 'Libro eliminado exitosamente.');
+    }
+
+    /**
+     * Verificar si un ISBN está disponible.
+     */
+    public function checkIsbn(Request $request)
+    {
+        $isbn = $request->input('isbn');
+        $exists = Libro::where('isbn', $isbn)->exists();
+        
+        return response()->json([
+            'available' => !$exists
+        ]);
     }
 }

@@ -1,0 +1,46 @@
+/* Estilos para la barra de navegación de la biblioteca */
+.biblioteca-navbar {
+    background-color: #1e293b; /* Cambiado a un tono oscuro */
+    border-bottom: 1px solid #334155;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body.dark .biblioteca-navbar {
+    background-color: #0f172a; /* Tono más oscuro para modo oscuro */
+    border-bottom: 1px solid #1e293b;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem; /* Padding aumentado */
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: #e2e8f0; /* Color claro para texto */
+    transition: all 0.3s ease;
+    margin: 0 0.25rem;
+}
+
+.nav-link:hover {
+    color: #60a5fa; /* Azul más claro */
+    background-color: rgba(96, 165, 250, 0.15);
+    transform: translateY(-1px);
+}
+
+.nav-link.active {
+    color: #60a5fa;
+    background-color: rgba(96, 165, 250, 0.2);
+    font-weight: 600;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+body.dark .nav-link {
+    color: #cbd5e1;
+}
+
+body.dark .nav-link:hover,
+body.dark .nav-link.active {
+    color: #93c5fd; /* Azul más claro para modo oscuro */
+    background-color: rgba(147, 197, 253, 0.15);
+}

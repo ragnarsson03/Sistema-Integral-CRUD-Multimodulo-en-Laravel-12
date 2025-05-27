@@ -1,0 +1,245 @@
+/* Estilos generales */
+body.dark .libro-table {
+    background-color: #1e293b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para la tabla de libros */
+.libro-table {
+    min-width: 100%;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-collapse: collapse;
+}
+
+.libro-table-header {
+    background-color: #1e40af;
+    color: white;
+}
+
+.libro-table-header th {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.libro-table-row {
+    border-bottom: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+}
+
+.libro-table-row:hover {
+    background-color: #f1f5f9;
+    transform: translateY(-1px);
+}
+
+body.dark .libro-table-row:hover {
+    background-color: #2d3748;
+}
+
+.libro-table-cell {
+    padding: 0.875rem 1.25rem;
+    color: #1e293b;
+    font-size: 0.95rem;
+}
+
+body.dark .libro-table-cell {
+    color: #e2e8f0;
+}
+
+/* Estilos para los botones de acción */
+.action-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.action-button-view {
+    color: #ffffff;
+    background-color: #3b82f6;
+}
+
+.action-button-view:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.action-button-edit {
+    color: #ffffff;
+    background-color: #f59e0b;
+}
+
+.action-button-edit:hover {
+    background-color: #d97706;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(217, 119, 6, 0.2);
+}
+
+.action-button-delete {
+    color: #ffffff;
+    background-color: #ef4444;
+}
+
+.action-button-delete:hover {
+    background-color: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
+}
+
+/* Estilos para mensajes de alerta */
+.alert-success {
+    background-color: #dcfce7;
+    border-left: 4px solid #22c55e;
+    color: #15803d;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+}
+
+.alert-success p {
+    margin: 0;
+}
+
+/* Explicación del ISBN para el profesor */
+.isbn-explanation {
+    margin-top: 2.5rem;
+    padding: 1.75rem;
+    background-color: #f8fafc;
+    border-left: 4px solid #3b82f6;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+body.dark .isbn-explanation {
+    background-color: #1e293b;
+    border-left: 4px solid #60a5fa;
+}
+
+.isbn-explanation h4 {
+    color: #1e40af;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+body.dark .isbn-explanation h4 {
+    color: #60a5fa;
+}
+
+.isbn-explanation p {
+    color: #334155;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+body.dark .isbn-explanation p {
+    color: #e2e8f0;
+}
+
+.isbn-explanation ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.isbn-explanation li {
+    color: #334155;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+body.dark .isbn-explanation li {
+    color: #e2e8f0;
+}
+
+.isbn-explanation strong {
+    color: #1e40af;
+    font-weight: 600;
+}
+
+body.dark .isbn-explanation strong {
+    color: #60a5fa;
+}
+
+/* Estilos para el formulario de búsqueda */
+.search-container {
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.625rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.375rem;
+    font-size: 0.95rem;
+    color: #1e293b;
+    background-color: white;
+    transition: all 0.2s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+body.dark .search-input {
+    background-color: #1e293b;
+    border-color: #475569;
+    color: #e2e8f0;
+}
+
+body.dark .search-input:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+.search-button {
+    padding: 0.625rem 1.25rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.search-button:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.search-reset {
+    padding: 0.625rem 1.25rem;
+    background-color: #64748b;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.search-reset:hover {
+    background-color: #475569;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(100, 116, 139, 0.2);
+}
