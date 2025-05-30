@@ -28,6 +28,20 @@
                 </div>
             @endif
 
+            <!-- Mensajes de advertencia -->
+            @if(session('warning'))
+                <div class="comedor-alert comedor-alert-warning mb-4" role="alert">
+                    <p>{{ session('warning') }}</p>
+                </div>
+            @endif
+
+            <!-- Alerta cuando no hay estudiantes -->
+            @if(isset($hayEstudiantes) && !$hayEstudiantes)
+                <div class="comedor-alert comedor-alert-info mb-4" role="alert">
+                    <p><strong>Atención:</strong> Necesitas registrar estudiantes en el sistema académico para poder utilizar el sistema de comedor. Por favor, registra estudiantes antes de crear tarjetas.</p>
+                </div>
+            @endif
+
             <!-- Tabla de Tarjetas -->
             <div class="comedor-container">
                 <div class="p-6 text-gray-900 dark:text-gray-100">

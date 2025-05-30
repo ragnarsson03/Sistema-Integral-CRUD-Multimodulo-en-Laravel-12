@@ -14,7 +14,8 @@ class TarjetaController extends Controller
     public function index()
     {
         $tarjetas = Tarjeta::with('estudiante')->latest()->paginate(10);
-        return view('comedor.tarjetas.index', compact('tarjetas'));
+        $hayEstudiantes = \App\Models\Academico\Estudiante::count() > 0;
+        return view('comedor.tarjetas.index', compact('tarjetas', 'hayEstudiantes'));
     }
 
     /**
@@ -22,6 +23,13 @@ class TarjetaController extends Controller
      */
     public function create()
     {
+        $hayEstudiantes = \App\Models\Academico\Estudiante::count() > 0;
+        
+        if (!$hayEstudiantes) {
+            return redirect()->route('comedor.tarjetas.index')
+                ->with('warning', 'Necesitas registrar estudiantes antes de crear tarjetas de comedor.');
+        }
+        
         return view('comedor.tarjetas.create');
     }
 

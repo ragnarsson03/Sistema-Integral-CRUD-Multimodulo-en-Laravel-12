@@ -82,10 +82,12 @@ body.dark .tarjeta-card {
     padding: 1rem;
     text-align: center;
     border-bottom: 1px solid #e2e8f0;
+    color: #1e293b; /* Añadir color de texto para modo claro */
 }
 
 body.dark .comedor-table td {
     border-bottom: 1px solid #475569;
+    color: #e2e8f0; /* Mantener color de texto para modo oscuro */
 }
 
 .comedor-table tr:hover {
