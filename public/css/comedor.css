@@ -1,0 +1,392 @@
+/* Estilos específicos para el módulo de comedor */
+
+/* Estilos generales */
+.comedor-container {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+body.dark .comedor-container {
+    background-color: #1e293b;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+.comedor-header {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.comedor-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.comedor-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+}
+
+/* Estilos para tarjetas */
+.tarjeta-card {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid #0ea5e9;
+}
+
+.tarjeta-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .tarjeta-card {
+    background-color: #334155;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la tabla de tarjetas */
+.comedor-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.comedor-table th {
+    background-color: #0ea5e9;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1rem;
+    text-align: center;
+}
+
+.comedor-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+body.dark .comedor-table td {
+    border-bottom: 1px solid #475569;
+}
+
+.comedor-table tr:hover {
+    background-color: #f1f5f9;
+}
+
+body.dark .comedor-table tr:hover {
+    background-color: #334155;
+}
+
+/* Estilos para los botones */
+.comedor-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 0.5rem;
+    text-decoration: none;
+}
+
+.comedor-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.comedor-button-primary {
+    background-color: #0ea5e9;
+    color: white;
+}
+
+.comedor-button-primary:hover {
+    background-color: #0284c7;
+}
+
+.comedor-button-success {
+    background-color: #10b981;
+    color: white;
+}
+
+.comedor-button-success:hover {
+    background-color: #059669;
+}
+
+.comedor-button-danger {
+    background-color: #ef4444;
+    color: white;
+}
+
+.comedor-button-danger:hover {
+    background-color: #dc2626;
+}
+
+.comedor-button-warning {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.comedor-button-warning:hover {
+    background-color: #d97706;
+}
+
+/* Estilos para los formularios */
+.comedor-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.comedor-form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+}
+
+body.dark .comedor-form-label {
+    color: #e2e8f0;
+}
+
+.comedor-form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    color: #1e293b;
+}
+
+.comedor-form-input:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+body.dark .comedor-form-input {
+    background-color: #1e293b;
+    border-color: #475569;
+    color: #e2e8f0;
+}
+
+body.dark .comedor-form-input:focus {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+.comedor-form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    color: #1e293b;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+}
+
+.comedor-form-select:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+body.dark .comedor-form-select {
+    background-color: #1e293b;
+    border-color: #475569;
+    color: #e2e8f0;
+}
+
+/* Estilos para las tarjetas de información */
+.info-card {
+    background-color: #f8fafc;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #0ea5e9;
+}
+
+body.dark .info-card {
+    background-color: #334155;
+    border-left: 4px solid #0ea5e9;
+}
+
+.info-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0ea5e9;
+    margin-bottom: 1rem;
+}
+
+body.dark .info-card-title {
+    color: #38bdf8;
+}
+
+.info-card-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.info-item {
+    margin-bottom: 0.75rem;
+}
+
+.info-label {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 0.25rem;
+}
+
+body.dark .info-label {
+    color: #94a3b8;
+}
+
+.info-value {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+body.dark .info-value {
+    color: #e2e8f0;
+}
+
+/* Estilos para los mensajes de alerta */
+.comedor-alert {
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.comedor-alert-success {
+    background-color: #dcfce7;
+    border-left: 4px solid #10b981;
+    color: #065f46;
+}
+
+.comedor-alert-danger {
+    background-color: #fee2e2;
+    border-left: 4px solid #ef4444;
+    color: #b91c1c;
+}
+
+.comedor-alert-warning {
+    background-color: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    color: #b45309;
+}
+
+.comedor-alert-info {
+    background-color: #e0f2fe;
+    border-left: 4px solid #0ea5e9;
+    color: #0369a1;
+}
+
+body.dark .comedor-alert-success {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+}
+
+body.dark .comedor-alert-danger {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+body.dark .comedor-alert-warning {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+}
+
+body.dark .comedor-alert-info {
+    background-color: rgba(14, 165, 233, 0.2);
+    color: #38bdf8;
+}
+
+/* Estilos para el estado de la tarjeta */
+.estado-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.estado-activo {
+    background-color: #dcfce7;
+    color: #065f46;
+}
+
+.estado-inactivo {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+body.dark .estado-activo {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+}
+
+body.dark .estado-inactivo {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+/* Estilos para la sección de transacciones */
+.transacciones-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+body.dark .transacciones-section {
+    border-top: 1px solid #475569;
+}
+
+.transaccion-tipo-recarga {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.transaccion-tipo-consumo {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+body.dark .transaccion-tipo-recarga {
+    color: #34d399;
+}
+
+body.dark .transaccion-tipo-consumo {
+    color: #f87171;
+}
