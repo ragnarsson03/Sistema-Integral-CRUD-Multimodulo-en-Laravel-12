@@ -1,47 +1,52 @@
 <x-app-layout>
     <x-slot name="header">
+        <link rel="stylesheet" href="{{ asset('css/academico.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/academico-estudiante-detalle.css') }}">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Detalles del Estudiante') }}
         </h2>
     </x-slot>
 
+    <!-- Incluir el navbar específico de estudiantes -->
+    @include('academico.estudiantes.navbar')
+
     <div class="py-12 academic-background">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="academic-container p-6">
-                <h3 class="academic-title">Información del Estudiante</h3>
+            <div class="estudiante-detalle-container">
+                <h3 class="estudiante-detalle-titulo">Información del Estudiante</h3>
 
-                <div class="bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+                <div class="estudiante-info-card">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <p class="text-gray-400 text-sm">Nombre:</p>
-                            <p class="text-white text-lg font-semibold">{{ $estudiante->nombre }}</p>
+                            <p class="estudiante-campo-etiqueta">Nombre:</p>
+                            <p class="estudiante-campo-valor">{{ $estudiante->nombre }}</p>
                         </div>
                         <div>
-                            <p class="text-gray-400 text-sm">Apellido:</p>
-                            <p class="text-white text-lg font-semibold">{{ $estudiante->apellido }}</p>
+                            <p class="estudiante-campo-etiqueta">Apellido:</p>
+                            <p class="estudiante-campo-valor">{{ $estudiante->apellido }}</p>
                         </div>
                         <div>
-                            <p class="text-gray-400 text-sm">Cédula:</p>
-                            <p class="text-white text-lg font-semibold">{{ $estudiante->cedula }}</p>
+                            <p class="estudiante-campo-etiqueta">Cédula:</p>
+                            <p class="estudiante-campo-valor">{{ $estudiante->cedula }}</p>
                         </div>
                         <div>
-                            <p class="text-gray-400 text-sm">Grado:</p>
-                            <p class="text-white text-lg font-semibold">{{ $estudiante->grado }}</p>
+                            <p class="estudiante-campo-etiqueta">Grado:</p>
+                            <p class="estudiante-campo-valor">{{ $estudiante->grado }}</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center">
-                    <a href="{{ route('academico.asistencias.estudiante', $estudiante) }}" class="academic-action-button action-asistencia text-center py-3 px-6">
+                <div class="estudiante-acciones-container">
+                    <a href="{{ route('academico.asistencias.estudiante', $estudiante) }}" class="estudiante-accion-btn btn-asistencias">
                         <i class="fas fa-clipboard-check mr-2"></i>Ver Asistencias
                     </a>
-                    <a href="{{ route('academico.notas.estudiante', $estudiante) }}" class="academic-action-button action-notas text-center py-3 px-6">
+                    <a href="{{ route('academico.notas.estudiante', $estudiante) }}" class="estudiante-accion-btn btn-notas">
                         <i class="fas fa-graduation-cap mr-2"></i>Ver Notas
                     </a>
-                    <a href="{{ route('academico.estudiantes.edit', $estudiante) }}" class="academic-action-button action-editar text-center py-3 px-6">
+                    <a href="{{ route('academico.estudiantes.edit', $estudiante) }}" class="estudiante-accion-btn btn-editar">
                         <i class="fas fa-edit mr-2"></i>Editar
                     </a>
-                    <a href="{{ route('academico.estudiantes.index') }}" class="academic-action-button bg-blue-600 text-white text-center py-3 px-6">
+                    <a href="{{ route('academico.estudiantes.index') }}" class="estudiante-accion-btn btn-volver">
                         <i class="fas fa-arrow-left mr-2"></i>Volver
                     </a>
                 </div>

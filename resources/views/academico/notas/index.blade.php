@@ -4,7 +4,10 @@
             {{ __('Registro de Notas') }}
         </h2>
     </x-slot>
-    
+        <!-- Incluir el navbar específico de estudiantes -->
+        @include('academico.estudiantes.navbar')
+
+
     <!-- Agregar referencia al archivo CSS de alertas -->
     <link rel="stylesheet" href="{{ asset('css/alerts.css') }}">
 

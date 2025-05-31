@@ -102,4 +102,12 @@ class AsistenciaController extends Controller
         
         return view('academico.asistencias.estudiante', compact('estudiante', 'asistencias'));
     }
+
+    /**
+     * Muestra las asistencias de un estudiante específico (método alternativo para la ruta específica).
+     */
+    public function showEstudianteAsistencias(Estudiante $estudiante)
+    {
+        return $this->estudiante($estudiante);
+    }
 }

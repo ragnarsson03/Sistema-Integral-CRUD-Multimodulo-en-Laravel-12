@@ -71,12 +71,8 @@ class EstudianteController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'fecha_nacimiento' => 'required|date',
             'cedula' => 'required|string|max:20|unique:estudiantes,cedula,' . $estudiante->id,
-            'grado' => 'required|string|max:50',
-            'direccion' => 'nullable|string|max:255',
-            'telefono' => 'nullable|string|max:20',
-            'email' => 'nullable|email|max:255',
+            'grado' => 'required|integer|min:1|max:12',
         ]);
 
         $estudiante->update($request->all());

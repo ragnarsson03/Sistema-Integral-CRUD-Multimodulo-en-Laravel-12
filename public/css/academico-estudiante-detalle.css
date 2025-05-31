@@ -1,0 +1,120 @@
+/* Estilos específicos para la página de detalles del estudiante */
+
+/* Contenedor principal de información */
+.estudiante-detalle-container {
+    background-color: #2d3748;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Título de la sección */
+.estudiante-detalle-titulo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #90cdf4; /* Azul claro para mejor visibilidad */
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #4299e1;
+    padding-bottom: 0.75rem;
+}
+
+/* Tarjeta de información */
+.estudiante-info-card {
+    background-color: #1e293b; /* Un poco más claro que el fondo principal */
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Etiquetas de campos */
+.estudiante-campo-etiqueta {
+    color: #a0aec0; /* Gris claro para etiquetas */
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Valores de campos */
+.estudiante-campo-valor {
+    color: #f7fafc; /* Casi blanco para mejor legibilidad */
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Contenedor de botones de acción */
+.estudiante-acciones-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Botones de acción */
+.estudiante-accion-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.estudiante-accion-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+/* Colores específicos para cada tipo de botón */
+.btn-asistencias {
+    background-color: #4c51bf; /* Índigo */
+}
+
+.btn-asistencias:hover {
+    background-color: #5a67d8;
+}
+
+.btn-notas {
+    background-color: #805ad5; /* Púrpura */
+}
+
+.btn-notas:hover {
+    background-color: #9f7aea;
+}
+
+.btn-editar {
+    background-color: #dd6b20; /* Naranja */
+}
+
+.btn-editar:hover {
+    background-color: #ed8936;
+}
+
+.btn-volver {
+    background-color: #3182ce; /* Azul */
+}
+
+.btn-volver:hover {
+    background-color: #4299e1;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .estudiante-acciones-container {
+        flex-direction: column;
+    }
+    
+    .estudiante-accion-btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}

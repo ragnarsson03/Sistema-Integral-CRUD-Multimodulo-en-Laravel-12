@@ -79,4 +79,24 @@
                                                 <span class="px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 rounded">
                                                     Presente
                                                 </span>
-                                            @elseif($as
+                                            @elseif($asistencia->estado == 'ausente')
+                                                <span class="px-2 py-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 rounded">
+                                                    Ausente
+                                                </span>
+                                            @elseif($asistencia->estado == 'tardanza')
+                                                <span class="px-2 py-1 bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 rounded">
+                                                    Tardanza
+                                                </span>
+                                            @endif
+                                        </td>
+                                        <td class="py-3 px-4">{{ $asistencia->observaciones }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

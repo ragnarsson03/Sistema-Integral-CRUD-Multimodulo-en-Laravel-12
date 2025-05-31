@@ -137,4 +137,12 @@ class NotaController extends Controller
         
         return view('academico.notas.estudiante', compact('estudiante', 'notas'));
     }
+
+    /**
+     * Muestra las notas de un estudiante específico (método alternativo para la ruta específica).
+     */
+    public function showEstudianteNotas(Estudiante $estudiante)
+    {
+        return $this->estudiante($estudiante);
+    }
 }

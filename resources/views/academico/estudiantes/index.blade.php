@@ -6,6 +6,9 @@
         </h2>
     </x-slot>
 
+    <!-- Incluir el navbar específico de estudiantes -->
+    @include('academico.estudiantes.navbar')
+
     <div class="academic-background py-12">
         <div class="academic-container mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Mensaje de éxito -->
@@ -21,21 +24,7 @@
                 <p class="mt-2">Administración de estudiantes y seguimiento académico</p>
             </div>
 
-            <!-- Botones de Acción Principal -->
-            <div class="mb-8 flex justify-center space-x-6">
-                <a href="{{ route('academico.estudiantes.create') }}" class="academic-button academic-button-primary">
-                    <i class="fas fa-plus-circle mr-2"></i>Nuevo Estudiante
-                </a>
-                <a href="{{ route('academico.asistencias.index') }}" class="academic-button academic-button-success">
-                    <i class="fas fa-clipboard-check mr-2"></i>Control de Asistencia
-                </a>
-                <a href="{{ route('academico.notas.index') }}" class="academic-button academic-button-purple">
-                    <i class="fas fa-graduation-cap mr-2"></i>Registro de Notas
-                </a>
-                <a href="{{ route('academico.cursos.index') }}" class="academic-button academic-button-info">
-                    <i class="fas fa-book mr-2"></i>Gestión de Cursos
-                </a>
-            </div>
+          
 
             <!-- Sistema de Filtrado Mejorado -->
             <div class="filtros-container">

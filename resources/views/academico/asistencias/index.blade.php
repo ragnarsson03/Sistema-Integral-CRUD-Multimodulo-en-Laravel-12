@@ -4,6 +4,8 @@
             {{ __('Control de Asistencia') }}
         </h2>
     </x-slot>
+    <!-- Incluir el navbar específico de estudiantes -->
+    @include('academico.estudiantes.navbar')
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

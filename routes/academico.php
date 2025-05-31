@@ -24,4 +24,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('asistencias/estudiante/{estudiante}', [AsistenciaController::class, 'showEstudianteAsistencias'])
         ->name('asistencias.estudiante');
 });
-Route::resource('asistencias', AsistenciaController::class);
+// Eliminar esta línea duplicada
+// Route::resource('asistencias', AsistenciaController::class);
