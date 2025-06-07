@@ -43,15 +43,12 @@
             <h3 class="card-title">Seleccionar Fecha</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('academico.asistencias.index') }}" method="GET" class="form-inline justify-content-center">
+            <form id="fechaForm" action="{{ route('academico.asistencias.index') }}" method="GET" class="form-inline justify-content-center">
                 <div class="input-group date" id="datepicker" data-target-input="nearest">
                     <div class="input-group-prepend" data-target="#datepicker" data-toggle="datetimepicker">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
-                    <input type="text" name="fecha" value="{{ request('fecha', now()->format('Y-m-d')) }}" class="form-control datetimepicker-input" data-target="#datepicker">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary">Buscar</button>
-                    </div>
+                    <input type="text" name="fecha" id="fecha" value="{{ request('fecha', now()->format('Y-m-d')) }}" class="form-control datetimepicker-input" data-target="#datepicker">
                 </div>
             </form>
         </div>
@@ -63,7 +60,7 @@
             <h3 class="card-title">Registro de Asistencia - {{ \Carbon\Carbon::parse(request('fecha', now()))->format('d/m/Y') }}</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('academico.asistencias.store') }}" method="POST">
+            <form id="asistenciaForm" action="{{ route('academico.asistencias.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="fecha" value="{{ request('fecha', now()->format('Y-m-d')) }}">
                 
@@ -117,6 +114,13 @@
                         </tbody>
                     </table>
                 </div>
+                
+                <!-- Botón de guardar visible -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <i class="fas fa-save mr-2"></i> Guardar Asistencia
+                    </button>
+                </div>
             </form>
         </div>
     </div>
@@ -125,7 +129,7 @@
 @section('scripts')
 <script>
     $(function () {
-        //Initialize Datetimepicker
+        // Inicializar Datetimepicker
         $('#datepicker').datetimepicker({
             format: 'YYYY-MM-DD',
             icons: {
@@ -139,6 +143,17 @@
                 clear: 'far fa-trash-alt',
                 close: 'far fa-times-circle'
             }
+        });
+        
+        // Enviar el formulario automáticamente cuando cambia la fecha
+        $('#datepicker').on('change.datetimepicker', function(e) {
+            $('#fechaForm').submit();
+        });
+        
+        // Mostrar el botón de guardar cuando se selecciona una opción de asistencia
+        $('input[type="radio"]').on('change', function() {
+            // Asegurarse de que el botón de guardar sea visible
+            $('.btn-success').show();
         });
     });
 </script>
