@@ -1,119 +1,119 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-center text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Gestión de Tarjetas de Comedor') }}
-        </h2>
-        <link rel="stylesheet" href="{{ asset('css/comedor.css') }}">
-    </x-slot>
+@extends('layouts.adminlte')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Encabezado del módulo -->
-            <div class="comedor-header mb-6">
-                <h1 class="comedor-title">Sistema de Tarjetas de Comedor</h1>
-                <p class="comedor-subtitle">Gestión de tarjetas para el servicio de alimentación universitaria</p>
-            </div>
-            
-            <!-- Botones de Acción Principal -->
-            <div class="mb-6 flex justify-center space-x-4">
-                <a href="{{ route('comedor.tarjetas.create') }}" class="comedor-button comedor-button-success">
-                    <i class="fas fa-plus-circle mr-2"></i>Nueva Tarjeta
-                </a>
-            </div>
+@section('title', 'Gestión de Tarjetas de Comedor')
 
-            <!-- Mensajes de éxito -->
-            @if(session('success'))
-                <div class="comedor-alert comedor-alert-success mb-4" role="alert">
-                    <p>{{ session('success') }}</p>
-                </div>
-            @endif
+@section('content')
+    <!-- CSS específico de comedor -->
+    <link rel="stylesheet" href="{{ asset('css/comedor.css') }}">
 
-            <!-- Mensajes de advertencia -->
-            @if(session('warning'))
-                <div class="comedor-alert comedor-alert-warning mb-4" role="alert">
-                    <p>{{ session('warning') }}</p>
-                </div>
-            @endif
+    <!-- Encabezado del módulo -->
+    <div class="card bg-gradient-primary mb-3">
+        <div class="card-body">
+            <h1 class="text-center text-white">Sistema de Tarjetas de Comedor</h1>
+            <p class="text-center text-white">Gestión de tarjetas para el servicio de alimentación universitaria</p>
+        </div>
+    </div>
+    
+    <!-- Botones de Acción Principal -->
+    <div class="mb-3 text-center">
+        <a href="{{ route('comedor.tarjetas.create') }}" class="btn btn-success">
+            <i class="fas fa-plus-circle mr-2"></i>Nueva Tarjeta
+        </a>
+    </div>
 
-            <!-- Alerta cuando no hay estudiantes -->
-            @if(isset($hayEstudiantes) && !$hayEstudiantes)
-                <div class="comedor-alert comedor-alert-info mb-4" role="alert">
-                    <p><strong>Atención:</strong> Necesitas registrar estudiantes en el sistema académico para poder utilizar el sistema de comedor. Por favor, registra estudiantes antes de crear tarjetas.</p>
-                </div>
-            @endif
+    <!-- Mensajes de éxito -->
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-check"></i> ¡Éxito!</h5>
+            {{ session('success') }}
+        </div>
+    @endif
 
-            <!-- Tabla de Tarjetas -->
-            <div class="comedor-container">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h3 class="text-2xl font-bold text-center mb-6">Tarjetas Registradas</h3>
-                    
-                    <div class="overflow-x-auto">
-                        <table class="comedor-table min-w-full">
-                            <thead>
-                                <tr>
-                                    <th>Código</th>
-                                    <th>Estudiante</th>
-                                    <th>Saldo</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse($tarjetas as $tarjeta)
-                                    <tr>
-                                        <td>{{ $tarjeta->codigo }}</td>
-                                        <td>
-                                            {{ $tarjeta->estudiante->nombre }} {{ $tarjeta->estudiante->apellido }}
-                                        </td>
-                                        <td>
-                                            ${{ number_format($tarjeta->saldo, 2) }}
-                                        </td>
-                                        <td>
-                                            @if($tarjeta->activa)
-                                                <span class="estado-badge estado-activo">
-                                                    Activa
-                                                </span>
-                                            @else
-                                                <span class="estado-badge estado-inactivo">
-                                                    Inactiva
-                                                </span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <div class="flex justify-center space-x-2">
-                                                <a href="{{ route('comedor.tarjetas.show', $tarjeta) }}" class="comedor-button comedor-button-primary py-1 px-3 text-xs">
-                                                    Ver
-                                                </a>
-                                                <a href="{{ route('comedor.tarjetas.edit', $tarjeta) }}" class="comedor-button comedor-button-warning py-1 px-3 text-xs">
-                                                    Editar
-                                                </a>
-                                                <form action="{{ route('comedor.tarjetas.destroy', $tarjeta) }}" method="POST" class="inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="comedor-button comedor-button-danger py-1 px-3 text-xs" onclick="return confirm('¿Estás seguro de eliminar esta tarjeta?')">
-                                                        Eliminar
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="5" class="text-center py-4">
-                                            No hay tarjetas registradas
-                                        </td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <!-- Paginación -->
-                    <div class="mt-4">
-                        {{ $tarjetas->links() }}
-                    </div>
-                </div>
+    <!-- Mensajes de advertencia -->
+    @if(session('warning'))
+        <div class="alert alert-warning alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-exclamation-triangle"></i> ¡Advertencia!</h5>
+            {{ session('warning') }}
+        </div>
+    @endif
+
+    <!-- Alerta cuando no hay estudiantes -->
+    @if(isset($hayEstudiantes) && !$hayEstudiantes)
+        <div class="alert alert-info alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-info"></i> Información</h5>
+            <p><strong>Atención:</strong> Necesitas registrar estudiantes en el sistema académico para poder utilizar el sistema de comedor. Por favor, registra estudiantes antes de crear tarjetas.</p>
+        </div>
+    @endif
+
+    <!-- Tabla de Tarjetas -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Tarjetas Registradas</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Estudiante</th>
+                            <th>Saldo</th>
+                            <th>Estado</th>
+                            <th>Fecha Creación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($tarjetas as $tarjeta)
+                            <tr>
+                                <td>{{ $tarjeta->codigo }}</td>
+                                <td>{{ $tarjeta->estudiante->nombre }} {{ $tarjeta->estudiante->apellido }}</td>
+                                <td>
+                                    @if($tarjeta->saldo <= 5)
+                                        <span class="badge badge-danger">${{ number_format($tarjeta->saldo, 2) }}</span>
+                                    @elseif($tarjeta->saldo <= 15)
+                                        <span class="badge badge-warning">${{ number_format($tarjeta->saldo, 2) }}</span>
+                                    @else
+                                        <span class="badge badge-success">${{ number_format($tarjeta->saldo, 2) }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($tarjeta->activa)
+                                        <span class="badge badge-success">Activa</span>
+                                    @else
+                                        <span class="badge badge-danger">Inactiva</span>
+                                    @endif
+                                </td>
+                                <td>{{ $tarjeta->created_at->format('d/m/Y') }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ route('comedor.tarjetas.show', $tarjeta) }}" class="btn btn-sm btn-info">
+                                            <i class="fas fa-eye"></i> Ver
+                                        </a>
+                                        <a href="{{ route('comedor.tarjetas.edit', $tarjeta) }}" class="btn btn-sm btn-warning">
+                                            <i class="fas fa-edit"></i> Editar
+                                        </a>
+                                        <form action="{{ route('comedor.tarjetas.destroy', $tarjeta) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar esta tarjeta?')">
+                                                <i class="fas fa-trash"></i> Eliminar
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="6" class="text-center">No hay tarjetas registradas</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection

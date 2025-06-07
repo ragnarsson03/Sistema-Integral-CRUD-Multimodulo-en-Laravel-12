@@ -265,3 +265,40 @@ $(function () {
     options: salesGraphChartOptions
   })
 })
+
+$(function () {
+    'use strict'
+
+    // Inicializar componentes de AdminLTE
+    $('.card').each(function(index) {
+        let delay = index * 100;
+        $(this).css('animation-delay', delay + 'ms');
+    });
+
+    // Añadir efectos a los botones
+    $('.btn-outline-light').hover(
+        function() {
+            $(this).addClass('shadow-lg');
+        },
+        function() {
+            $(this).removeClass('shadow-lg');
+        }
+    );
+
+    // Inicializar tooltips si Bootstrap está disponible
+    if (typeof $().tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+
+    // Inicializar popovers si Bootstrap está disponible
+    if (typeof $().popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+
+    // Verificar si hay mensajes de alerta para mostrar
+    if ($('.alert').length > 0) {
+        setTimeout(function() {
+            $('.alert').fadeOut('slow');
+        }, 5000);
+    }
+});

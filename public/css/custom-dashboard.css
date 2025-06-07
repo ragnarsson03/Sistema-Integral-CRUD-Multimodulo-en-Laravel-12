@@ -1,0 +1,76 @@
+/* Estilos personalizados para el dashboard */
+.dashboard-info-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.dashboard-info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.card-footer {
+    border-radius: 0 0 10px 10px !important;
+}
+
+.btn-outline-light {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    transform: translateY(-2px);
+}
+
+.module-description {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+/* Mejoras para la visualización en dispositivos móviles */
+@media (max-width: 768px) {
+    .module-description {
+        min-height: auto;
+    }
+}
+
+/* Animaciones para los módulos */
+.card {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para el encabezado del dashboard */
+.dashboard-header-card {
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    color: white;
+    border: none;
+    margin-bottom: 25px;
+}
+
+.dashboard-header-card .card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.dashboard-header-card p {
+    opacity: 0.9;
+}

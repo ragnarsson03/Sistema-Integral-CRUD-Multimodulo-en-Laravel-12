@@ -1,55 +1,72 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Registro de Notas') }}
-        </h2>
-    </x-slot>
-        <!-- Incluir el navbar específico de estudiantes -->
-        @include('academico.estudiantes.navbar')
+@extends('layouts.adminlte')
 
+@section('title', 'Registro de Notas')
 
-    <!-- Agregar referencia al archivo CSS de alertas -->
-    <link rel="stylesheet" href="{{ asset('css/alerts.css') }}">
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Agregar alerta cuando no hay cursos -->
-            @if($cursos->isEmpty())
-                <div class="alert-container">
-                    <div class="alert-warning" role="alert">
-                        <p>Necesitas crear un curso antes de añadir notas.</p>
-                        <a href="{{ route('academico.cursos.create') }}" class="alert-action-button">Crear un curso ahora</a>
-                    </div>
-                </div>
-            @endif
-            
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h3 class="text-lg font-medium">Listado de Notas</h3>
-                    
-                    <div class="mt-4">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-lg font-semibold">Notas</h3>
-                            <div class="space-x-2">
-                                @if($cursos->isEmpty())
-                                    <a href="{{ route('academico.cursos.create') }}" class="inline-flex items-center px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md">
-                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                        </svg>
-                                        Crear Curso
-                                    </a>
-                                @endif
-                                <a href="{{ route('academico.notas.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                    </svg>
-                                    Nueva Nota
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+@section('content')
+    <!-- Incluir el navbar específico de estudiantes como parte del contenido -->
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 class="card-title">Navegación de Estudiantes</h3>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="btn-group">
+                <a href="{{ route('academico.estudiantes.index') }}" class="btn btn-primary {{ request()->routeIs('academico.estudiantes.index') ? 'active' : '' }}">
+                    <i class="fas fa-list mr-1"></i> Listado de Estudiantes
+                </a>
+                <a href="{{ route('academico.estudiantes.create') }}" class="btn btn-success {{ request()->routeIs('academico.estudiantes.create') ? 'active' : '' }}">
+                    <i class="fas fa-plus-circle mr-1"></i> Nuevo Estudiante
+                </a>
+                <a href="{{ route('academico.asistencias.index') }}" class="btn btn-info {{ request()->routeIs('academico.asistencias.index') ? 'active' : '' }}">
+                    <i class="fas fa-check-circle mr-1"></i> Asistencias
+                </a>
+                <a href="{{ route('academico.notas.index') }}" class="btn btn-warning {{ request()->routeIs('academico.notas.index') ? 'active' : '' }}">
+                    <i class="fas fa-graduation-cap mr-1"></i> Notas
+                </a>
             </div>
         </div>
     </div>
-</x-app-layout>
+
+    <!-- Mensaje de éxito -->
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-check"></i> ¡Éxito!</h5>
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <!-- Agregar alerta cuando no hay cursos -->
+    @if($cursos->isEmpty())
+        <div class="alert alert-warning alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-exclamation-triangle"></i> Atención</h5>
+            <p>Necesitas crear un curso antes de añadir notas.</p>
+            <a href="{{ route('academico.cursos.create') }}" class="btn btn-warning btn-sm">
+                <i class="fas fa-plus-circle"></i> Crear un curso ahora
+            </a>
+        </div>
+    @endif
+    
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Listado de Notas</h3>
+            <div class="card-tools">
+                <div class="btn-group">
+                    @if($cursos->isEmpty())
+                        <a href="{{ route('academico.cursos.create') }}" class="btn btn-warning btn-sm">
+                            <i class="fas fa-plus-circle"></i> Crear Curso
+                        </a>
+                    @endif
+                    <a href="{{ route('academico.notas.create') }}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-plus-circle"></i> Nueva Nota
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- Aquí irá el contenido de la tabla de notas -->
+        </div>
+    </div>
+@endsection
