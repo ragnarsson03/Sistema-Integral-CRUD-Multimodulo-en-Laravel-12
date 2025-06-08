@@ -66,7 +66,98 @@
             </div>
         </div>
         <div class="card-body">
-            <!-- Aquí irá el contenido de la tabla de notas -->
+            <!-- Filtros de búsqueda -->
+            <div class="mb-3">
+                <form action="{{ route('academico.notas.index') }}" method="GET" class="form-inline">
+                    <div class="form-group mr-2">
+                        <label for="curso_id" class="mr-2">Curso:</label>
+                        <select name="curso_id" id="curso_id" class="form-control form-control-sm">
+                            <option value="">Todos los cursos</option>
+                            @foreach($cursos as $curso)
+                                <option value="{{ $curso->id }}" {{ request('curso_id') == $curso->id ? 'selected' : '' }}>
+                                    {{ $curso->nombre }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group mr-2">
+                        <label for="grado" class="mr-2">Grado:</label>
+                        <select name="grado" id="grado" class="form-control form-control-sm">
+                            <option value="">Todos los grados</option>
+                            @for($i = 1; $i <= 12; $i++)
+                                <option value="{{ $i }}" {{ request('grado') == $i ? 'selected' : '' }}>
+                                    {{ $i }}
+                                </option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div class="form-group mr-2">
+                        <label for="periodo" class="mr-2">Período:</label>
+                        <select name="periodo" id="periodo" class="form-control form-control-sm">
+                            <option value="">Todos los períodos</option>
+                            <option value="Primer Trimestre" {{ request('periodo') == 'Primer Trimestre' ? 'selected' : '' }}>Primer Trimestre</option>
+                            <option value="Segundo Trimestre" {{ request('periodo') == 'Segundo Trimestre' ? 'selected' : '' }}>Segundo Trimestre</option>
+                            <option value="Tercer Trimestre" {{ request('periodo') == 'Tercer Trimestre' ? 'selected' : '' }}>Tercer Trimestre</option>
+                            <option value="Final" {{ request('periodo') == 'Final' ? 'selected' : '' }}>Final</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        <i class="fas fa-search"></i> Filtrar
+                    </button>
+                </form>
+            </div>
+
+            <!-- Tabla de notas -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Estudiante</th>
+                            <th>Curso</th>
+                            <th>Calificación</th>
+                            <th>Período</th>
+                            <th>Fecha Evaluación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($notas as $nota)
+                            <tr>
+                                <td>{{ $nota->id }}</td>
+                                <td>{{ $nota->estudiante->apellido }}, {{ $nota->estudiante->nombre }}</td>
+                                <td>{{ $nota->curso->nombre }}</td>
+                                <td>{{ $nota->calificacion }}</td>
+                                <td>{{ $nota->periodo }}</td>
+                                <td>{{ $nota->fecha_evaluacion->format('d/m/Y') }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ route('academico.notas.edit', $nota) }}" class="btn btn-sm btn-info">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <form action="{{ route('academico.notas.destroy', $nota) }}" method="POST" style="display: inline;" onsubmit="return confirm('¿Está seguro de eliminar esta nota?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" class="text-center">No hay notas registradas</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Paginación -->
+            <div class="mt-3">
+                {{ $notas->appends(request()->query())->links() }}
+            </div>
         </div>
     </div>
 @endsection
