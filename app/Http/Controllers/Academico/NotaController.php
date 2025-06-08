@@ -75,7 +75,7 @@ class NotaController extends Controller
             'curso_id' => 'required|exists:cursos,id',
             'calificacion' => 'required|numeric|min:0|max:20',
             'periodo' => 'required|string|max:50',
-            'fecha' => 'required|date',
+            'fecha_evaluacion' => 'required|date',  // Corregido: fecha → fecha_evaluacion
             'observaciones' => 'nullable|string|max:500',
         ]);
         

@@ -74,40 +74,44 @@
                 </div>
                 
                 <div class="row">
-                    <!-- Calificación -->
-                    <div class="col-md-4">
+                    <!-- Fecha de Evaluación (NUEVO CAMPO) -->
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label for="calificacion">Calificación (0-20)</label>
-                            <input type="number" name="calificacion" id="calificacion" min="0" max="20" step="0.01" value="{{ old('calificacion') }}" class="form-control @error('calificacion') is-invalid @enderror" required>
+                            <label for="fecha_evaluacion">Fecha de Evaluación</label>
+                            <div class="input-group date" id="fechaEvaluacion" data-target-input="nearest">
+                                <div class="input-group-prepend" data-target="#fechaEvaluacion" data-toggle="datetimepicker">
+                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                </div>
+                                <input type="text" name="fecha_evaluacion" id="fecha_evaluacion" value="{{ old('fecha_evaluacion', now()->format('Y-m-d')) }}" 
+                                       class="form-control datetimepicker-input @error('fecha_evaluacion') is-invalid @enderror" 
+                                       data-target="#fechaEvaluacion" required>
+                            </div>
+                            @error('fecha_evaluacion')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    
+                    <!-- Calificación -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="calificacion">Calificación</label>
+                            <input type="number" name="calificacion" id="calificacion" 
+                                   class="form-control @error('calificacion') is-invalid @enderror" 
+                                   value="{{ old('calificacion') }}" step="0.01" min="0" max="20" required>
                             @error('calificacion')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
-                    
-                    <!-- Período -->
-                    <div class="col-md-4">
+                    <!-- Añadir después del campo de calificación y antes de observaciones -->
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="periodo">Período</label>
-                            <select name="periodo" id="periodo" class="form-control @error('periodo') is-invalid @enderror" required>
-                                <option value="">Seleccionar período</option>
-                                <option value="Primer Lapso" {{ old('periodo') == 'Primer Lapso' ? 'selected' : '' }}>Primer Lapso</option>
-                                <option value="Segundo Lapso" {{ old('periodo') == 'Segundo Lapso' ? 'selected' : '' }}>Segundo Lapso</option>
-                                <option value="Tercer Lapso" {{ old('periodo') == 'Tercer Lapso' ? 'selected' : '' }}>Tercer Lapso</option>
-                                <option value="Final" {{ old('periodo') == 'Final' ? 'selected' : '' }}>Final</option>
-                            </select>
+                            <input type="text" name="periodo" id="periodo" 
+                                   class="form-control @error('periodo') is-invalid @enderror" 
+                                   value="{{ old('periodo') }}" required>
                             @error('periodo')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                    
-                    <!-- Fecha de Evaluación -->
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="fecha">Fecha de Evaluación</label>
-                            <input type="date" name="fecha" id="fecha" value="{{ old('fecha') ?? date('Y-m-d') }}" class="form-control @error('fecha') is-invalid @enderror" required>
-                            @error('fecha')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
                         </div>
@@ -134,4 +138,25 @@
             </form>
         </div>
     </div>
+@section('scripts')
+<script>
+    $(function () {
+        // Inicializar Datetimepicker para fecha de evaluación
+        $('#fechaEvaluacion').datetimepicker({
+            format: 'YYYY-MM-DD',
+            icons: {
+                time: 'far fa-clock',
+                date: 'far fa-calendar',
+                up: 'fas fa-arrow-up',
+                down: 'fas fa-arrow-down',
+                previous: 'fas fa-chevron-left',
+                next: 'fas fa-chevron-right',
+                today: 'fas fa-calendar-check',
+                clear: 'far fa-trash-alt',
+                close: 'far fa-times-circle'
+            }
+        });
+    });
+</script>
+@endsection
 @endsection
