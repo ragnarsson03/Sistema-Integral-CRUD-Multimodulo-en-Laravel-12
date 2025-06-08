@@ -17,7 +17,6 @@ yarn-error.log
 
 # Laravel Mix
 /public/hot
-/public/build
 
 # IDEs y herramientas
 /.vscode
